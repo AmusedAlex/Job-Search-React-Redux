@@ -20,8 +20,13 @@ export default function NavBar() {
           variant="outline-success"
           onClick={() => navigate("/favorites")}
         >
-          <span className="mr-2">View {cartLength} favorite companies</span>{" "}
-          <HeartFill />
+          {cartLength > 0 ? (
+            <span className="mr-2">
+              View <b>{cartLength} </b>favorite companies <HeartFill />
+            </span>
+          ) : (
+            "No companies selected"
+          )}
         </Button>
       </Navbar.Collapse>
     </Navbar>

@@ -1,7 +1,7 @@
 import { Col, Row, Button, Container } from "react-bootstrap";
 import { House, Trash } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Cart now needs to read and write to the store, reading the value of cart.Data
 // and being able to dispatch an action for removing an element from the cart
@@ -9,11 +9,16 @@ import { Link, useNavigate } from "react-router-dom";
 const Favorites = ({ cart = [] }) => {
   const cartData = useSelector((state) => state.cart.data);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   return (
     <Container style={{ height: "80vh" }}>
       <Row>
         <Col sm={12}>
+          {cartData.length > 0 ? (
+            <h3 className="mt-5">Your favourite companies:</h3>
+          ) : (
+            ""
+          )}
           <ul style={{ listStyle: "none" }}>
             {cartData.length > 0 ? (
               cartData.map((company, i) => (

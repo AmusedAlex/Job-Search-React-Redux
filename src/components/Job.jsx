@@ -31,7 +31,7 @@ const Job = ({ data }) => {
         </Col>
         <Col xs={3}>
           <Button
-            color="primary"
+            variant="success"
             onClick={() => {
               dispatch({
                 type: "ADD_TO_CART",
