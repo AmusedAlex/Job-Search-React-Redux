@@ -2,12 +2,13 @@ import { Col, Row, Button, Container } from "react-bootstrap";
 import { House, Trash } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { removeFromCarAction } from "../redux/actions";
 
 // Cart now needs to read and write to the store, reading the value of cart.Data
 // and being able to dispatch an action for removing an element from the cart
 
 const Favorites = ({ cart = [] }) => {
-  const cartData = useSelector((state) => state.cart.data);
+  const cartData = useSelector((state) => state.data);
   const dispatch = useDispatch();
 
   return (
@@ -31,10 +32,7 @@ const Favorites = ({ cart = [] }) => {
                     className="ml-4"
                     variant="danger"
                     onClick={() => {
-                      dispatch({
-                        type: "REMOVE_FROM_CART",
-                        payload: i,
-                      });
+                      dispatch(removeFromCarAction(i));
                     }}
                   >
                     <Trash />
