@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Container, Row, Col, Form, Alert, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getJobsAction } from "../redux/actions";
+import { getJobsAction, GET_JOBS_LOADING } from "../redux/actions";
 import Job from "./Job";
 
 const MainSearch = () => {
@@ -10,6 +10,7 @@ const MainSearch = () => {
   const dispatch = useDispatch();
   const jobsFromRedux = useSelector((state) => state.stock.stock);
   const areJobsError = useSelector((state) => state.stock.isError);
+  console.log("🚀 areJobsError", areJobsError);
 
   const areJobsLoading = useSelector((state) => state.stock.isLoading);
 
@@ -19,6 +20,10 @@ const MainSearch = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch({
+      type: GET_JOBS_LOADING,
+      payload: true,
+    });
     dispatch(getJobsAction(query));
   };
 

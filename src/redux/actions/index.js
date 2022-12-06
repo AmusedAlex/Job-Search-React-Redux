@@ -27,10 +27,12 @@ export const getJobsAction = (query) => {
       if (response.ok) {
         const data = await response.json();
         const jobListFromFetch = data.data;
-        dispatch({
-          type: GET_JOBS_LOADING,
-          payload: false,
-        });
+        setTimeout(() => {
+          dispatch({
+            type: GET_JOBS_LOADING,
+            payload: false,
+          });
+        }, 2000);
         dispatch({
           type: GET_JOBS,
           payload: jobListFromFetch,
@@ -51,6 +53,10 @@ export const getJobsAction = (query) => {
       dispatch({
         type: GET_JOBS_LOADING,
         payload: false,
+      });
+      dispatch({
+        type: GET_JOBS_ERROR,
+        payload: true,
       });
     }
   };

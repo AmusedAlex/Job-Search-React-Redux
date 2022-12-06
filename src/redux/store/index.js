@@ -9,10 +9,19 @@ import jobReducer from "../reducers/jobReducer.js";
 
 import localStorage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
+import { encryptTransform } from "redux-persist-transform-encrypt";
 
 const persistConfig = {
   key: "root",
   storage: localStorage,
+  transforms: [
+    encryptTransform({
+      secretKey: "MY_SUPER_SECRET_KEY",
+      onError: function (error) {
+        console.log(error);
+      },
+    }),
+  ],
 };
 
 const bigReducer = combineReducers({
