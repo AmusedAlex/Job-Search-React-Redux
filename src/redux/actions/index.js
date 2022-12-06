@@ -16,18 +16,24 @@ export const removeFromCarAction = (i) => {
   };
 };
 
-// export const getJobsAction = ()=>{
-//     return async (dispatch, getState) =>{
-//         try {
-//             const response = await fetch(baseEndpoint + query + "&limit=20");
-//             if (response.ok) {
-//               const { data } = await response.json();
-//               setJobs(data);
-//             } else {
-//               alert("Error fetching results");
-//             }
-//           } catch (error) {
-//             console.log(error);
-//           }
-//         };
-//     }
+export const getJobsAction = (query) => {
+  return async (dispatch, getState) => {
+    let baseEndpoint =
+      "https://strive-benchmark.herokuapp.com/api/jobs?search=";
+    try {
+      const response = await fetch(baseEndpoint + query + "&limit=20");
+      if (response.ok) {
+        const data = await response.json();
+        const jobListFromFetch = data.data;
+        dispatch({
+          type: GET_JOBS,
+          payload: jobListFromFetch,
+        });
+      } else {
+        alert("Error fetching results");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
