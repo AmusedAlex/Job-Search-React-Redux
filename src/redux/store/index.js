@@ -16,7 +16,7 @@ const persistConfig = {
   storage: localStorage,
   transforms: [
     encryptTransform({
-      secretKey: "MY_SUPER_SECRET_KEY",
+      secretKey: process.env.REACT_APP_SECRET_KEY,
       onError: function (error) {
         console.log(error);
       },
