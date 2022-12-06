@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function NavBar() {
   const navigate = useNavigate();
-  const cartLength = useSelector((state) => state.cart.data.length);
+  const cartLength = useSelector((state) => state.cart.length);
   return (
     <Navbar bg="light" expand="lg">
       <Link to="/">

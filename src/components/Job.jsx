@@ -5,6 +5,7 @@ import { addToCartAction } from "../redux/actions";
 
 const Job = ({ data }) => {
   const dispatch = useDispatch();
+  console.log(data);
   return (
     <>
       <Row className="mx-0 mt-3">
