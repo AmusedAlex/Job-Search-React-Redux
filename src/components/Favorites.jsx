@@ -8,7 +8,7 @@ import { removeFromCarAction } from "../redux/actions";
 // and being able to dispatch an action for removing an element from the cart
 
 const Favorites = ({ cart = [] }) => {
-  const cartData = useSelector((state) => state.data);
+  const cartData = useSelector((state) => state.cart.data);
   const dispatch = useDispatch();
 
   return (
