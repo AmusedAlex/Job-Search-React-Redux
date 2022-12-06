@@ -8,7 +8,7 @@ const MainSearch = () => {
   const [query, setQuery] = useState("");
   // const [jobs, setJobs] = useState([]);
   const dispatch = useDispatch();
-  const jobsFromRedux = useSelector((state) => state.jobs.stock);
+  const jobsFromRedux = useSelector((state) => state.stock);
 
   // const baseEndpoint =
   //   "https://strive-benchmark.herokuapp.com/api/jobs?search=";
